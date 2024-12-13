@@ -1,8 +1,7 @@
 import { Header } from "@/components/Header";
 import { RecipeCard } from "@/components/RecipeCard";
-import { Contact } from "@/components/Contact";
 import { recipes } from "@/data/recipes";
-import img from "./img/semra.png";
+
 import food1 from "./img/food1.jpg";
 import food2 from "./img/food2.jpg";
 import food3 from "./img/food3.jpg";

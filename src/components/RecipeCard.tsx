@@ -1,7 +1,7 @@
 import { useState } from "react";
-import { ChevronDown, ChevronUp } from "lucide-react";
+
 import { Card, CardContent } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
+
 import {
   Carousel,
   CarouselContent,
@@ -9,7 +9,7 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
-import { Recipe, recipes } from "@/data/recipes";
+import { Recipe } from "@/data/recipes";
 
 interface RecipeCardProps {
   recipe: Recipe;
@@ -19,7 +19,7 @@ export function RecipeCard({ recipe }: RecipeCardProps) {
   const [isExpanded, setIsExpanded] = useState(false);
 
   return (
-    <Card className="relative overflow-hidden">
+    <Card className="relative overflow-hidden cursor-pointer" onClick={() => setIsExpanded(!isExpanded)}>
       {/* Carousel */}
       <Carousel className="w-full max-h-[300px]">
         <CarouselContent>
