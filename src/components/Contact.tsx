@@ -3,12 +3,13 @@ import { Card, CardContent } from "@/components/ui/card";
 
 export function Contact() {
   return (
+    
     <section id="contact" className="py-16 bg-white text-black">
       <div className="container mx-auto px-4">
-        <h2 className="font-bold text-4xl text-foreground md:text-5xl text-center mb-12 tracking-wide">
+        <h2 className="font-bold text-3xl text-foreground md:text-4xl text-center mb-12 tracking-wide">
           İletişime Geçin
         </h2>
-        <div className="grid gap-8 md:grid-cols-3">
+        <div className="grid gap-8 md:grid-cols-3 justify-center">
           {/* Telefon */}
           <Card className="bg-white/10 backdrop-blur-lg shadow-lg rounded-xl">
             <CardContent className="flex items-center gap-6 p-8">

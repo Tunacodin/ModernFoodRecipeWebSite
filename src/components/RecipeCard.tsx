@@ -21,7 +21,7 @@ export function RecipeCard({ recipe }: RecipeCardProps) {
   return (
     <Card className="relative overflow-hidden">
       {/* Carousel */}
-      <Carousel className="w-full">
+      <Carousel className="w-full max-h-[300px]">
         <CarouselContent>
           {recipe.images.map((image: string, index: number) => (
             <CarouselItem key={index}>
@@ -33,7 +33,7 @@ export function RecipeCard({ recipe }: RecipeCardProps) {
                 <img
                   src={image}
                   alt={`${recipe.name} - ${index + 1}`}
-                  className="object-cover w-full h-full"
+                  className="w-full h-[300px] object-cover object-center"
                 />
               </div>
             </CarouselItem>

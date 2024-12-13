@@ -25,7 +25,7 @@ export const recipes: Recipe[] = [
     name: 'Köfte',
     description: 'Geleneksel Türk mutfağının vazgeçilmez lezzeti, baharatlarla harmanlanmış el yapımı köfte',
     images: [
-      fırındaTavuk,
+      köfte,
       'https://images.unsplash.com/photo-1529042410759-befb1204b468?q=80&w=1200',
       'https://images.unsplash.com/photo-1633321702518-7feccafb94d5?q=80&w=1200',
     ],
@@ -152,7 +152,7 @@ export const recipes: Recipe[] = [
       'Tavuğu ve sebzeleri fırın tepsisine yerleştirin',
       'Fırında pişirin',
     ],
-    categories: ['Ana Yemek', 'Et Yemekleri'],
+    categories: ['Ana Yemek', 'Et Yemekleri', 'Tavuk Yemekleri'],
   },
   {
     id: '6',

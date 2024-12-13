@@ -10,6 +10,7 @@ export function NavigationMenu() {
     { id: 'about', label: 'Hakkımda' },
     { id: 'recipes', label: 'Tarifler' },
     { id: 'contact', label: 'İletişim' },
+    { id: 'categories', label: 'Kategoriler' },
   ];
 
   return (

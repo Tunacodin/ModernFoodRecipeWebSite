@@ -13,6 +13,7 @@ import food6 from "./img/food6.jpg";
 
 import { useState, useEffect } from "react";
 import { ChevronDown, ChevronUp } from "lucide-react";
+import AboutContact  from "../src/components/AboutContact";
 
 const foodItems = [
   {
@@ -59,6 +60,7 @@ function App() {
   // Carousel state to manage the current index
   const [currentIndex, setCurrentIndex] = useState(0);
   const [showCategories, setShowCategories] = useState(false);
+  const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
 
   // Effect to change the image every 3 seconds
   useEffect(() => {
@@ -96,14 +98,16 @@ function App() {
       ))}
     </div>
 
-    {/* Carousel Text Overlay - Orta alt kısma taşındı */}
-    <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 bg-black bg-opacity-50 text-white text-center rounded-lg p-6 shadow-lg max-w-lg">
-      <h2 className="text-2xl md:text-3xl font-bold mb-2">
-        {foodItems[currentIndex].title} {/* Dinamik başlık */}
-      </h2>
-      <p className="text-sm md:text-base">
-        {foodItems[currentIndex].description} {/* Dinamik açıklama */}
-      </p>
+    {/* Carousel Text Overlay - Centered in the middle */}
+    <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-50 text-white text-center rounded-lg p-6">
+      <div>
+        <h2 className="text-2xl md:text-3xl font-bold mb-2">
+          {foodItems[currentIndex].title} {/* Dinamik başlık */}
+        </h2>
+        <p className="text-sm md:text-base">
+          {foodItems[currentIndex].description} {/* Dinamik açıklama */}
+        </p>
+      </div>
     </div>
 
     {/* Modernized Indicators - Updated to reflect currentIndex */}
@@ -120,27 +124,15 @@ function App() {
       ))}
     </div>
 
-    {/* Modernized Navigation Arrows */}
-    <button
-      className="absolute left-8 top-1/2 transform -translate-y-1/2  text-white p-3 rounded-full shadow-lg hover:bg-purple-300 transition duration-200"
-      style={{ fontSize: "3.5rem" }}
-      onClick={() => setCurrentIndex((prevIndex) => (prevIndex - 1 + foodItems.length) % foodItems.length)}
-    >
-      &#8249;
-    </button>
-    <button
-      className="absolute right-8 top-1/2 transform -translate-y-1/2  text-white p-3 rounded-full shadow-lg hover:bg-purple-300 transition duration-200"
-      style={{ fontSize: "3.5rem" }}
-      onClick={() => setCurrentIndex((prevIndex) => (prevIndex + 1) % foodItems.length)}
-    >
-      &#8250;
-    </button>
+    {/* Remove Navigation Arrows - Swipe functionality will replace this */}
+    {/* <button ...> ... </button> */}
+    {/* <button ...> ... </button> */}
   </div>
 </section>
 
 
        {/* Recipes Section */}
-        <section id="recipes" className="py-16 bg-background border rounded-xl border-gray-300 mx-10 z-10 mt-[-2rem] shadow-lg">
+        <section id="recipes" className="py-16 bg-white border rounded-xl mx-10 z-10 mt-[-2rem] ">
           <div className="container mx-auto px-4">
             <div className="flex justify-between items-center mb-8">
               <h2 className="font-sans text-4xl text-primary">Tarifler</h2>
@@ -162,13 +154,14 @@ function App() {
 
             {/* Kategoriler Listesi */}
             {showCategories && (
-              <div className="mb-8 bg-gray-100 rounded-lg p-4 shadow-inner">
+              <div className="mb-8 bg-gray-100 rounded-lg p-4 shadow-inner transition-all duration-300">
                 <h3 className="text-lg font-semibold mb-2">Kategoriler:</h3>
                 <ul className="grid gap-2 md:grid-cols-2 lg:grid-cols-3">
                   {categories.map((category: string, index: number) => (
                     <li
                       key={index}
-                      className="p-2 bg-purple-100 text-purple-800 rounded-lg hover:bg-purple-200 transition"
+                      className="p-2 bg-purple-100 text-purple-800 rounded-lg hover:bg-purple-200 transition cursor-pointer"
+                      onClick={() => setSelectedCategory(category)}
                     >
                       {category}
                     </li>
@@ -178,15 +171,17 @@ function App() {
             )}
 
             <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-              {recipes.map((recipe) => (
-                <RecipeCard key={recipe.id} recipe={recipe} />
-              ))}
+              {recipes
+                .filter(recipe => selectedCategory ? recipe.categories.includes(selectedCategory) : true)
+                .map((recipe) => (
+                  <RecipeCard key={recipe.id} recipe={recipe} />
+                ))}
             </div>
           </div>
         </section>
 
-        {/* Contact Section */}
-        <Contact />
+        {/* About and Contact Section */}
+        <AboutContact />
       </main>
 
       <footer className="py-6 bg-accent border-t border-accent-foreground/10">
